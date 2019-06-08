@@ -12,10 +12,3 @@
     ("org"      . "orgmode.org/elpa/")
     ("gnu"      . "elpa.gnu.org/packages/")
     ("spacelpa" . ,(concat configuration-layer-stable-elpa-archive "/packages/"))))
-
-(setq package-archive-priorities
-      '(("spacelpa" . 8)
-        ("melpa"    . 4)
-        ("org"      . 2)
-        ("gnu"      . 1)))
-
