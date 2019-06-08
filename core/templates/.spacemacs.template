@@ -38,21 +38,77 @@ This function should only modify configuration layer settings."
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     ;; auto-completion
-     ;; better-defaults
+     (auto-completion :variables
+        ;; auto-completion-return-key-behavior 'complete
+        auto-completion-tab-key-behavior 'cycle
+        auto-completion-complete-with-key-sequence nil
+        auto-completion-enable-help-tooltip t
+        auto-completion-enable-sort-by-usage t
+        ;; auto-completion-enable-snippets-in-popup t
+        ;; auto-completion-private-snippets-directory nil
+        )
+     (c-c++ :variables
+            c-c++-default-mode-for-headers 'c++-mode
+            c-c++-enable-clang-support t
+            ;; c-c++-enable-clang-format-on-save t
+            c-c++-enable-c++11 t
+            ;; Don't enable cmake to avoid annoying error messages. -rk 1/11/2018
+            ;; c-c++-enable-cmake-ide-support t
+
+            c-c++-backend 'lsp-ccls
+            c-c++-lsp-executable "/u/kimr/depot/ccls-20190520/bin/ccls"
+            ;; c-c++-lsp-executable "/u/kimr/opt/ccls-20190314.1/bin/ccls"
+            ;; c-c++-lsp-sem-highlight-method 'font-lock ; or 'overlay
+            c-c++-lsp-sem-highlight-rainbow t
+            c-c++-adopt-subprojects t
+            ;; c-c++-lsp-cache-dir
+            )
+     command-log
+     csv
+     dap
+     (dash :variables helm-dash-docsets-path "/u/kimr/public_html/docsets")
      emacs-lisp
-     ;; git
+     (git :variables git-magit-status-fullscreen t)
+
+     github
+     graphviz
+
+     ;; gtags layer suddend caused startup failure with this! -rk 6/24/2017
+     ;; Wrong type argument: (or eieio-object class), nil, obj
+     (gtags :variables
+        gtags-enable-by-default nil
+        ggtags-update-on-save nil
+        ;; never call "global -u" which seems to hang. -rk 4/14/2014
+        ggtags-oversize-limit 0
+        )
+     html
+     ipython-notebook
+
+     ;; Enable ivy or helm, not both.
+     ;; (ivy :variables ivy-magic-tilde nil)
      helm
-     ;; markdown
+
+     javascript
+     latex
+     lsp
+     markdown
      multiple-cursors
-     ;; org
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
-     ;; spell-checking
-     ;; syntax-checking
+     neotree
+     (org :variables org-enable-github-support t org-enable-reveal-js-support t)
+     perforce
+     python
+     shell
+     shell-scripts
+     spell-checking
+     syntax-checking
      treemacs
-     ;; version-control
+     version-control
+     vimscript
+     yaml
+
+     ;; my-layer1
+     ;; my-irony ; slows down things too much
+     ;; my-bbdb
      )
 
    ;; List of additional packages that will be installed without being
