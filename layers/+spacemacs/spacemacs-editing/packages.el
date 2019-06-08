@@ -407,7 +407,9 @@
     "xrpx" 'rxt-pcre-to-rx))
 
 (defun spacemacs-editing/init-smartparens ()
-  (use-package smartparens
+  ;; Completely disable smartparens which cause too much grief.
+  ;; https://github.com/syl20bnr/spacemacs/issues/12533
+  '(use-package smartparens
     :defer t
     :commands (sp-point-in-string-or-comment sp-forward-symbol sp-split-sexp sp-newline sp-up-sexp)
     :init

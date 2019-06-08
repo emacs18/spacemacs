@@ -27,7 +27,7 @@
         (archive-mode :location built-in)
         (bookmark :location built-in)
         (buffer-menu :location built-in)
-        (conf-mode :location built-in)
+        ;;(conf-mode :location built-in)
         (cus-edit :location built-in
                   :toggle (or (eq 'vim dotspacemacs-editing-style)
                               (eq 'hybrid dotspacemacs-editing-style)))
@@ -49,8 +49,8 @@
         (page-break-lines :location built-in)
         (process-menu :location built-in)
         (recentf :location built-in)
-        (savehist :location built-in)
-        (saveplace :location built-in)
+        ;;(savehist :location built-in)
+        ;;(saveplace :location built-in)
         (subword :location built-in)
         (tar-mode :location built-in)
         (uniquify :location built-in)
@@ -58,8 +58,8 @@
         (visual-line-mode :location built-in)
         (whitespace :location built-in)
         (winner :location built-in)
-        (zone :location built-in)))
-
+        ;; (zone :location built-in)
+        ))
 
 ;; Initialization of packages
 
