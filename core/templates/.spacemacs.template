@@ -61,7 +61,7 @@ This function should only modify configuration layer settings."
             ;; c-c++-lsp-sem-highlight-method 'font-lock ; or 'overlay
             c-c++-lsp-sem-highlight-rainbow t
             c-c++-adopt-subprojects t
-            ;; c-c++-lsp-cache-dir
+            c-c++-lsp-cache-dir "~/.cache/lsp-ccls"
             )
      command-log
      csv
