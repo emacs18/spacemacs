@@ -516,6 +516,10 @@ before packages are loaded."
 
   ;; (push "\\*magit" spacemacs-useful-buffers-regexp)
   (push "magit" spacemacs-useful-buffers-regexp)
+
+  (when (boundp 'c-c++-lsp-cache-dir)
+    (unless (file-directory-p c-c++-lsp-cache-dir)
+      (make-directory c-c++-lsp-cache-dir t)))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
