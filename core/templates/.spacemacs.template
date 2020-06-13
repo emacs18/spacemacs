@@ -76,6 +76,7 @@ This function should only modify configuration layer settings."
       ;; :variables rmh-elfeed-org-files ,(list "~/.emacs.d/data/elfeed-org.org")
       )
      emacs-lisp
+     (evil-snipe :variables evil-snipe-enable-alternate-f-and-t-behaviors t)
      (git :variables git-magit-status-fullscreen nil)
 
      ;; (gtags
