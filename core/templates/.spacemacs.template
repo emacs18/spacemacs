@@ -50,20 +50,28 @@ This function should only modify configuration layer settings."
       )
      (c-c++
       :variables
+      ;; c++-enable-organize-includes-on-save t
+      c-c++-adopt-subprojects t
+      ;; c-c++-enable-auto-newline nil
+      c-c++-backend 'lsp-ccls
       c-c++-default-mode-for-headers 'c++-mode
-      c-c++-enable-clang-support t
-      ;; c-c++-enable-clang-format-on-save t
       c-c++-enable-c++11 t
+      ;; c-c++-enable-clang-format-on-save t
+      c-c++-enable-clang-support t
       ;; Don't enable cmake to avoid annoying error messages. -rk 1/11/2018
       ;; c-c++-enable-cmake-ide-support t
+      ;; c-c++-enable-google-newline nil
+      ;; c-c++-enable-google-style nil
+      ;; c-c++-enable-rtags-completion t
 
-      c-c++-backend 'lsp-ccls
+      ;; Cache may use several GB of disk space!
+      c-c++-lsp-cquery-cache-directory ,(expand-file-name "~/.cache/lsp-ccls")
+      ;; c-c++-lsp-enable-semantic-highlight nil
+      ;; c-c++-lsp-semantic-highlight-method 'font-lock
+      ;; c-c++-lsp-semantic-highlight-method 'overlay
       ;; c-c++-lsp-executable "/u/kimr/depot/ccls-20190520/bin/ccls"
       ;; c-c++-lsp-sem-highlight-method 'font-lock ; or 'overlay
       c-c++-lsp-sem-highlight-rainbow t
-      c-c++-adopt-subprojects t
-      ;; Cache may use several GB of disk space!
-      c-c++-lsp-cquery-cache-directory ,(expand-file-name "~/.cache/lsp-ccls")
 
       ;; ccls-executable ,(expand-file-name "ccls" invocation-directory)
       ;; ccls-args '("--init={\"index\": {\"threads\": 2}}")
@@ -111,7 +119,12 @@ This function should only modify configuration layer settings."
       )
      perforce
      python
-     shell
+     (shell :variables
+            ;; shell-default-shell 'eshell
+            ;; shell-default-height 30
+            ;; shell-default-position 'bottom
+            ;; shell-default-position 'right
+            )
      shell-scripts
      spell-checking
      sql
