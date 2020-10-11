@@ -526,8 +526,19 @@ See the header of this file for more information."
 This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
-If you are unsure, try setting them in `dotspacemacs/user-config' first.")
-
+If you are unsure, try setting them in `dotspacemacs/user-config' first."
+  (setq package-check-signature nil)
+  ;; Use my own package archives rather than the default internet sites.
+  (setq configuration-layer-elpa-archives
+        `(("melpa"   . ,(expand-file-name "~kimr/repos/my/melpa-packages/"))
+          ("org"     . ,(expand-file-name "~kimr/repos/my/org-packages/"))
+          ("gnu"     . ,(expand-file-name "~kimr/repos/my/elpa-packages/"))
+          ("nongnu"  . ,(expand-file-name "~kimr/repos/my/nongnu-packages/"))
+          ;; ("melpa" . "https://melpa.org/packages/")
+          ;; ("org"   . "https://orgmode.org/elpa/")
+          ;; ("gnu"   . "https://elpa.gnu.org/packages/")
+          ))
+  )
 
 (defun dotspacemacs/user-load ()
   "Library to load while dumping.
