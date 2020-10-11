@@ -64,7 +64,12 @@ This function should only modify configuration layer settings."
    ;; `dotspacemacs/user-config'. To use a local version of a package, use the
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages
+   ;; package-build package was added here after removing them from
+   ;; spacemacs/core/libs directory. -rk 3/1/2020
+   '(package-build hook-helpers pretty-hydra modus-operandi-theme
+                   helm-org-ql
+                   modus-vivendi-theme emacsql-sqlite)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
