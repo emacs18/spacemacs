@@ -25,6 +25,8 @@
 ;; ---------------------------------------------------------------------------
 ;; Increase garbage collection threshold to speed up startup.
 (defconst emacs-start-time (current-time))
+;; (setq spacemacs-start-directory (file-name-directory load-file-name))
+
 (setq gc-cons-threshold 402653184 gc-cons-percentage 0.6)
 
 ;; ---------------------------------------------------------------------------
