@@ -28,6 +28,8 @@
 ;; see `SPC h . dotspacemacs-gc-cons' for more info
 
 (defconst emacs-start-time (current-time))
+;; (setq spacemacs-start-directory (file-name-directory load-file-name))
+
 (setq gc-cons-threshold 402653184 gc-cons-percentage 0.6)
 (load (concat (file-name-directory load-file-name) "core/core-load-paths")
       nil (not init-file-debug))
