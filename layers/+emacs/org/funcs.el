@@ -21,6 +21,16 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
+;; I wrote this to so that I can limit org-roam to specific sub-set of all my
+;; org files. Primarily this is to simplify the graphs. -rk 10/17/2020
+(defun my-org-roam-set-directory (directory)
+  "Set `org-roam-directory' to DIRECTORY."
+  (interactive (list (read-directory-name "New directory: " org-directory)))
+  (setq org-roam-directory directory)
+  (setq org-roam-db-location (expand-file-name "org-roam.db" directory)))
+
+
+
 ;; Autoload space-doc-mode
 (autoload 'space-doc-mode "space-doc" nil 'interactive)
 

@@ -949,6 +949,7 @@ Headline^^            Visit entry^^               Filter^^                    Da
       (spacemacs/declare-prefix-for-mode 'org-mode "mrd" "org-roam-dailies")
       (spacemacs/declare-prefix-for-mode 'org-mode "mrt" "org-roam-tags")
       (spacemacs/set-leader-keys-for-major-mode 'org-mode
+        "rD" 'my-org-roam-set-directory
         "rb" 'org-roam-switch-to-buffer
         "rdy" 'org-roam-dailies-find-yesterday
         "rdt" 'org-roam-dailies-find-today
