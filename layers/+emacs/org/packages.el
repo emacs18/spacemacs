@@ -376,6 +376,7 @@ Will work on both org-mode and any mode that accepts plain html."
         "ip" 'org-set-property
         "is" 'org-insert-subheading
         "it" 'org-set-tags-command
+        "n"  'org-noter
         ;; region manipulation
         "xb" (spacemacs|org-emphasize spacemacs/org-bold ?*)
         "xc" (spacemacs|org-emphasize spacemacs/org-code ?~)
