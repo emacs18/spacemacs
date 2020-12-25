@@ -205,6 +205,7 @@
 
 (defun sql/init-sqlfmt ()
   (use-package sqlfmt
+    :straight nil
     :commands sqlfmt-buffer
     :init
     (spacemacs/declare-prefix-for-mode 'sql-mode "m=" "formatting")
