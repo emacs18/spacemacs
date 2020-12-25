@@ -318,6 +318,7 @@
 
 (defun ivy/init-ivy-spacemacs-help ()
   (use-package ivy-spacemacs-help
+    :elpaca nil
     :commands (ivy-spacemacs-help-dotspacemacs
                ivy-spacemacs-help
                ivy-spacemacs-help-faq

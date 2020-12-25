@@ -318,6 +318,7 @@
 
 (defun spacemacs-navigation/init-info+ ()
   (use-package info+
+    :elpaca nil
     :defer t
     :init
     (spacemacs/set-leader-keys "hj" 'info-display-manual)

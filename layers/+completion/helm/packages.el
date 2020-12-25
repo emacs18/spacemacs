@@ -405,6 +405,7 @@
 
 (defun helm/init-helm-spacemacs-help ()
   (use-package helm-spacemacs-help
+    :elpaca nil
     :commands (helm-spacemacs-help-dotspacemacs
                helm-spacemacs-help
                helm-spacemacs-help-faq
@@ -423,6 +424,7 @@
 
 (defun helm/init-helm-spacemacs-faq ()
   (use-package helm-spacemacs-faq
+    :elpaca nil
     :commands helm-spacemacs-help-faq
     :init (spacemacs/set-leader-keys "h f" 'helm-spacemacs-help-faq)))
 

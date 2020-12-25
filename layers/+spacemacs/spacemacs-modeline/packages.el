@@ -56,6 +56,7 @@
 
 (defun spacemacs-modeline/init-spaceline ()
   (use-package spaceline-config
+    :elpaca nil
     :if (memq (spacemacs/get-mode-line-theme-name)
               '(spacemacs all-the-icons custom))
     :init
