@@ -23,6 +23,8 @@
 ;; needed nor loaded on those versions.
 (setq package-enable-at-startup nil)
 
+(load "~/.emacs.d/init-straight.el")
+
 ;; These are needed after removing copies from core/libs.
 (use-package dash :defer t)
 (use-package ht :defer t)
