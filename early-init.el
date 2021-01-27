@@ -35,3 +35,7 @@
 (use-package page-break-lines :defer t)
 (use-package quelpa :defer t)
 (use-package spinner :defer t)
+
+;; Install modus-themes to avoid this error on start up:
+;;   error: (error Unable to find theme file for ‘modus-operandi’)
+(use-package modus-themes :defer t)
