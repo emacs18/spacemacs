@@ -252,10 +252,6 @@ Note: the hooked function is not executed when in dumped mode."
      (unless (version< emacs-version "27")
        (setq read-process-output-max dotspacemacs-read-process-output-max))))
 
-  (let ((default-directory spacemacs-start-directory))
-    (if dotspacemacs-byte-compile
-        (spacemacs//ensure-byte-compilation spacemacs--compiled-files)
-      (spacemacs//remove-byte-compiled-files-in-dir spacemacs-core-directory)))
   ;; Check if revision has changed.
   (spacemacs//revision-check))
 
