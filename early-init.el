@@ -22,3 +22,14 @@
 ;; the package manager before loading the init file, so this file is neither
 ;; needed nor loaded on those versions.
 (setq package-enable-at-startup nil)
+
+;; These are needed after removing copies from core/libs.
+(use-package dash :defer t)
+(use-package ht :defer t)
+(use-package ido-vertical-mode :defer t)
+(use-package load-env-vars :defer t)
+(use-package mocker :defer t)
+(use-package package-build :defer t)
+(use-package page-break-lines :defer t)
+(use-package quelpa :defer t)
+(use-package spinner :defer t)
