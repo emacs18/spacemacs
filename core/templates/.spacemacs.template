@@ -32,29 +32,74 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(
+   `(
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     ;; auto-completion
-     ;; better-defaults
-     emacs-lisp
-     ;; git
-     helm
-     ;; lsp
-     ;; markdown
-     multiple-cursors
-     ;; org
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
-     ;; spell-checking
-     ;; syntax-checking
-     ;; version-control
-     treemacs)
+     (c-c++
+      :variables
+      ;; c++-enable-organize-includes-on-save t
+      c-c++-adopt-subprojects t
+      ;; c-c++-enable-auto-newline nil
+      c-c++-backend 'lsp-ccls
+      c-c++-default-mode-for-headers 'c++-mode
+      c-c++-enable-c++11 t
+      ;; c-c++-enable-clang-format-on-save t
+      c-c++-enable-clang-support t
+      ;; Don't enable cmake to avoid annoying error messages. -rk 1/11/2018
+      ;; c-c++-enable-cmake-ide-support t
+      ;; c-c++-enable-google-newline nil
+      ;; c-c++-enable-google-style nil
+      ;; c-c++-enable-rtags-completion t
 
+      ;; Cache may use several GB of disk space!
+      c-c++-lsp-cquery-cache-directory ,(expand-file-name "~/.cache/lsp-ccls")
+      ;; c-c++-lsp-enable-semantic-highlight nil
+      ;; c-c++-lsp-semantic-highlight-method 'font-lock
+      ;; c-c++-lsp-semantic-highlight-method 'overlay
+      ;; c-c++-lsp-executable "/u/kimr/depot/ccls-20190520/bin/ccls"
+      ;; c-c++-lsp-sem-highlight-method 'font-lock ; or 'overlay
+      c-c++-lsp-sem-highlight-rainbow t
+
+      ;; ccls-executable ,(expand-file-name "ccls" invocation-directory)
+      ;; ccls-args '("--init={\"index\": {\"threads\": 2}}")
+      )
+     emacs-lisp
+     (git :variables git-magit-status-fullscreen nil)
+
+     ;; (gtags
+     ;;  :variables
+     ;;  gtags-enable-by-default nil
+     ;;  ggtags-update-on-save nil
+     ;;  ;; never call "global -u" which seems to hang. -rk 4/14/2014
+     ;;  ggtags-oversize-limit 0
+     ;;  )
+     helm
+     ;; Disable file watchers to prevent potential slow downs.
+     (lsp :variables
+          ;; Default prefix key is "s-l" which means "l pressed with super". I
+          ;; have no idea what this "super" prefix key is on linux.
+          lsp-keymap-prefix "C-;"
+          ;; This remaps "g d" and similar bindings to use lsp commands.
+          lsp-remap-xref-keybindings t
+          lsp-ui-sideline-show-hover t
+          lsp-enable-file-watchers nil)
+     (org
+      :variables
+      org-enable-valign nil           ;; added -rk 12/25/2020
+      )
+     perforce
+     python
+     syntax-checking
+     (treemacs :variables
+               ;; I'm not so sure what "scope" means.
+               ;; treemacs-use-persp-scope 'Perspectives
+               treemacs-use-follow-mode 'tag
+               )
+     version-control
+     )
 
    ;; List of additional packages that will be installed without being wrapped
    ;; in a layer (generally the packages are installed only and should still be
