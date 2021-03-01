@@ -101,8 +101,8 @@ This function should only modify configuration layer settings."
      ;; ipython-notebook
 
      ;; Enable ivy or helm, not both.
-     (ivy :variables ivy-magic-tilde nil)
-     ;; helm
+     ;; (ivy :variables ivy-magic-tilde nil)
+     helm
      ;; Disable file watchers to prevent potential slow downs.
      (lsp :variables
           ;; Default prefix key is "s-l" which means "l pressed with super". I
