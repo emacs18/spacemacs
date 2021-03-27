@@ -131,6 +131,7 @@ This function should only modify configuration layer settings."
 
       ;; org-enable-sticky-header t
       ;; org-enable-epub-support t
+      ;; org-enable-appear-support t
       )
      pandoc
      pdf
