@@ -20,7 +20,16 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+;; (setq warning-minimum-log-level :error)
+;; (add-to-list 'warning-suppress-types '(files . "Missing `lexical-binding' cookie"))
 
+;; Under some conditions several spacemacs|use-package-add-hook calls have no
+;; impact, e.g., within treemacs/pre-init-winum.  Such conditions may include
+;; if straight.el is used rather than package.el to install packages.
+(setq use-package-inject-hooks t)
+
+
+(custom-set-variables '(user-lisp-directory "~/org/kimr/dot-emacs/user-lisp"))
 ;; Before Emacs 27, the init file was responsible for initializing the package
 ;; manager by calling `package-initialize'. Emacs 27 changed the default
 ;; behavior: It now calls `package-initialize' before loading the init file.
