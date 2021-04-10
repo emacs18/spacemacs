@@ -46,3 +46,79 @@
 
 ;; Remove GUI elements early to avoid some possible grapical glitches.
 (spacemacs/removes-gui-elements)
+
+;; Setup to use straight.el package manager rather than the default package.el.
+(let* ((default-directory (file-name-directory load-file-name))
+       (init-file (expand-file-name "../init-straight.el")))
+  ;; Install packages under ./.local/straight directory.
+  (setq straight-base-dir (expand-file-name ".local"))
+
+  ;; ../init-straight.el is the setup file that sets emacs up to use straight.el
+  ;; rather than pacakge.el. This file is in parent directory rather than
+  ;; current directory, because it is used for several other startup
+  ;; configurations.
+  (if (file-exists-p init-file)
+      (load init-file)
+    (error "Error: %s does not exist" init-file))
+
+  ;; Normally straight.el does not need to know your user names on github, gitlab,
+  ;; etc. However you may need to specify it if you forked a package, and you fork
+  ;; is at github or other sites.
+  (setq straight-host-usernames
+        '((github . "emacs18")
+          (gitlab . "gitlabUser")
+          (bitbucket . "bitbucketUser")))
+
+  ;; A profile is collection of package names and git version numbers. Thus a
+  ;; profile identifies a very accurate state of installed packages. You can
+  ;; create profiles by "freezing" current versions by calling
+  ;; `straight-freeze-versions`.
+  (setq straight-profiles
+        '((nil . "default.el")
+          ;; You can any any number of additional profiles.
+          (2021-04-10 . "2021-04-10.el")
+          ))
+
+  ;; You set set which profile to use.
+  (setq straight-current-profile '2021-04-10)
+
+  ;; If recipes are to be over-ridden, then it should be done very early on before
+  ;; the default recipe is used, e.g., right about here.  Following is an example
+  ;; to use my own forked package with a bug fix.
+  ;;
+  (straight-override-recipe
+   '(hook-helpers :type git :host github :repo "emacs-straight/hook-helpers"
+                  :fork (:host github :repo "emacs18/hook-helpers")
+                  :branch "site" :files ("*" (:exclude ".git"))))
+
+  ;; My company intranet is limited in that many sites are not reachable such as
+  ;; https://depp.brause.cc/eyebrowse.git which is the default URL of eyebrowse
+  ;; package. Hence use github mirror instead.
+  (straight-override-recipe '(eyebrowse :host github :repo "emacsmirror/eyebrowse"))
+
+  ;; This is to prevent emacs wasting few seconds on startup contacting package
+  ;; archives which won't be needed anyways.
+  (defadvice configuration-layer/retrieve-package-archives
+      (around do-not-retrieve-package-archives activate)
+    "Disable this function to speed up emacs startup time.")
+
+  (straight-use-package 'hook-helpers)
+  ;; (straight-use-package 'engine-mode :branch "site")
+  ;; (straight-use-package 'ox-jira :branch "site")
+  ;; (straight-use-package 'styleguide :branch "site")
+
+  ;; These packages are embedded into spacemacs in core/libs directory which can
+  ;; be replaced by first removing them via "rm core/libs/*.el" then uncommenting
+  ;; the following lines.
+  ;;
+  ;; (use-package dash :defer t)
+  ;; (use-package ht :defer t)
+  ;; (use-package ido-vertical-mode :defer t)
+  ;; (use-package load-env-vars :defer t)
+  ;; (use-package mocker :defer t)
+  ;; (use-package package-build :defer t)
+  ;; (use-package page-break-lines :defer t)
+  ;; (use-package quelpa :defer t)
+  ;; (use-package spinner :defer t)
+  ;; (use-package validate :defer t)
+  )
