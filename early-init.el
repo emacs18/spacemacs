@@ -21,6 +21,11 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
+;; Under some conditions several spacemacs|use-package-add-hook calls have no
+;; impact, e.g., within treemacs/pre-init-winum.  Such conditions may include
+;; if straight.el is used rather than package.el to install packages.
+(setq use-package-inject-hooks t)
+
 ;; Before Emacs 27, the init file was responsible for initializing the package
 ;; manager by calling `package-initialize'. Emacs 27 changed the default
 ;; behavior: It now calls `package-initialize' before loading the init file.
