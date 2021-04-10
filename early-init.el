@@ -50,3 +50,46 @@
 ;;
 ;; (add-hook 'window-setup-hook 'spacemacs/toggle-gui-elements-off)
 ;; (add-hook 'tty-setup-hook 'spacemacs/toggle-gui-elements-off)
+
+;; Setup to use straight.el package manager rather than the default package.el.
+(let* ((default-directory (file-name-directory load-file-name))
+       (init-file (expand-file-name "../init-straight.el")))
+  ;; Install packages under ./.local/straight directory.
+  (setq straight-base-dir (expand-file-name ".local"))
+
+  ;; ../init-straight.el is the setup file that sets emacs up to use straight.el
+  ;; rather than pacakge.el. This file is in parent directory rather than
+  ;; current directory, because it is used for several other startup
+  ;; configurations.
+  (if (file-exists-p init-file)
+      (load init-file)
+    (error "Error: %s does not exist" init-file))
+
+  ;; A profile is collection of package names and git version numbers. Thus a
+  ;; profile identifies a very accurate state of installed packages. You can
+  ;; create profiles by "freezing" current versions by calling
+  ;; `straight-freeze-versions`.
+  (setq straight-profiles
+        '((nil . "default.el")
+          ;; You can any any number of additional profiles.
+          (2021-04-10 . "2021-04-10.el")
+          ))
+
+  ;; You set set which profile to use.
+  ;; (setq straight-current-profile '2021-04-10)
+
+  ;; This is to prevent emacs wasting few seconds on startup contacting package
+  ;; archives which won't be needed anyways.
+  (defadvice configuration-layer/retrieve-package-archives
+      (around do-not-retrieve-package-archives activate)
+    "Disable this function to speed up emacs startup time.")
+
+  ;; (straight-use-package '(eaf :type git :host github
+  ;;                             :repo "emacs-eaf/emacs-application-framework"
+  ;;                             :files ("*.el" "core/*.el" "extension/*.el")))
+  )
+
+;; This seems to require program called "delta" which needs to be installed.
+'(use-package magit-delta
+  :ensure t
+  :hook (magit-mode . magit-delta-mode))
