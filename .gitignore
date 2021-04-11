@@ -12,6 +12,9 @@
 .emacs.desktop
 .emacs.desktop.lock
 .extension
+.local/straight/build-*
+.local/straight/modified
+.local/straight/repos
 .lsp-session-*
 .mc-lists.el
 .places
