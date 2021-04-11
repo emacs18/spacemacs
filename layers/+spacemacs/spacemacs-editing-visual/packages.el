@@ -57,7 +57,8 @@
         :mode global-column-enforce-mode
         :documentation "Globally highlight the characters past the 80th column."
         :evil-leader "t C-8"))
-    :spacediminish ("⑧" "8")))
+    ;; :spacediminish ("⑧" "8")
+    ))
 
 (defun spacemacs-editing-visual/init-hide-comnt ()
   (use-package hide-comnt
@@ -84,8 +85,8 @@
         :mode highlight-indentation-current-column-mode
         :documentation "Highlight indentation level at point."
         :evil-leader "thc"))
-    :spacediminish ((" ⓗi" " hi")
-                    (highlight-indentation-current-column-mode " ⓗc" " hc"))))
+    ;; :spacediminish ((" ⓗi" " hi") (highlight-indentation-current-column-mode " ⓗc" " hc"))
+    ))
 
 (defun spacemacs-editing-visual/init-highlight-numbers ()
   (use-package highlight-numbers
@@ -141,7 +142,8 @@
         :mode indent-guide-global-mode
         :documentation "Highlight indentation level at point globally. (alternative to highlight-indentation)."
         :evil-leader "t TAB"))
-    :spacediminish (" ⓘ" " i")))
+    ;; :spacediminish (" ⓘ" " i")
+    ))
 
 (defun spacemacs-editing-visual/init-rainbow-delimiters ()
   (use-package rainbow-delimiters

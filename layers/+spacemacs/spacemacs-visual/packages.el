@@ -70,7 +70,7 @@
 (defun spacemacs-visual/init-fill-column-indicator ()
   (use-package fill-column-indicator
     :defer t
-    :spacediminish ((fci-mode " ⓕ" " f"))
+    ;; :spacediminish ((fci-mode " ⓕ" " f"))
     :init
     (progn
       (setq fci-rule-width 1)

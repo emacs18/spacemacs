@@ -43,7 +43,7 @@
 (defun exwm/init-desktop-environment ()
   (use-package desktop-environment
     :after exwm
-    :spacediminish t
+    ;; :spacediminish t
     :defer t
     :init (spacemacs|add-toggle desktop-environment
             :mode desktop-environment-mode

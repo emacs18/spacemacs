@@ -30,7 +30,7 @@
 (defun parinfer/init-parinfer-rust-mode ()
   (use-package parinfer-rust-mode
     :defer t
-    :spacediminish t
+    ;; :spacediminish t
     :hook emacs-lisp-mode clojure-mode scheme-mode common-lisp-mode
     :custom
     (parinfer-rust-auto-download t)

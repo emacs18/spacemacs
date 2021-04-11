@@ -34,7 +34,7 @@
 (defun syntax-checking/init-flycheck ()
   (use-package flycheck
     :defer t
-    :spacediminish (" ⓢ" " s")
+    ;; :spacediminish (" ⓢ" " s")
     :init
     (progn
       (spacemacs|add-transient-hook prog-mode-hook
