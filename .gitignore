@@ -14,6 +14,7 @@
 .emacs.desktop
 .emacs.desktop.lock
 .extension
+.local
 .lsp-session-*
 .mc-lists.el
 .places
