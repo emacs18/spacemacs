@@ -90,6 +90,8 @@
   ;; https://depp.brause.cc/eyebrowse.git which is the default URL of eyebrowse
   ;; package. Hence use github mirror instead.
   (straight-override-recipe '(eyebrowse :host github :repo "emacsmirror/eyebrowse"))
+  (straight-override-recipe '(paredit :host github :repo "emacsmirror/paredit"))
+  (straight-override-recipe '(highlight-parentheses :host github :branch "master" :repo "emacsmirror/highlight-parentheses"))
 
   ;; This is to prevent emacs wasting few seconds on startup contacting package
   ;; archives which won't be needed anyways.
