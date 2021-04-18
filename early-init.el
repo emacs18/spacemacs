@@ -99,23 +99,18 @@
       (around do-not-retrieve-package-archives activate)
     "Disable this function to speed up emacs startup time.")
 
-  (straight-use-package 'hook-helpers)
-  ;; (straight-use-package 'engine-mode :branch "site")
-  ;; (straight-use-package 'ox-jira :branch "site")
-  ;; (straight-use-package 'styleguide :branch "site")
-
-  ;; These packages are embedded into spacemacs in core/libs directory which can
-  ;; be replaced by first removing them via "rm core/libs/*.el" then uncommenting
-  ;; the following lines.
-  ;;
-  ;; (use-package dash :defer t)
-  ;; (use-package ht :defer t)
-  ;; (use-package ido-vertical-mode :defer t)
-  ;; (use-package load-env-vars :defer t)
-  ;; (use-package mocker :defer t)
-  ;; (use-package package-build :defer t)
-  ;; (use-package page-break-lines :defer t)
-  ;; (use-package quelpa :defer t)
-  ;; (use-package spinner :defer t)
-  ;; (use-package validate :defer t)
+  ;; These are needed to avoid start-up error after all installed packages are
+  ;; removed.
+  (straight-use-package 'bind-map)
+  (straight-use-package 'evil)
+  (straight-use-package 'which-key)
+  (straight-use-package 'window-purpose)
+  (straight-use-package 'helm-org-ql)
+  (straight-use-package 'ox-gfm)
+  (straight-use-package 'modus-vivendi-theme)
+  (straight-use-package 'modus-operandi-theme)
+  (straight-use-package 'org-re-reveal)
+  (straight-use-package 'package-build)
+  (straight-use-package 'pretty-hydra)
+  (straight-use-package 'yasnippet-snippets)
   )
