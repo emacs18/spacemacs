@@ -20,6 +20,7 @@
 .smex-items
 .trello
 /.cask/
+/.spacemacs
 /.my-keybindings.el.swp
 /eww-bookmarks
 /history
