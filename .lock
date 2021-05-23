@@ -5,7 +5,7 @@
 (setq configuration-layer-stable-elpa-archive (concat configuration-layer-stable-elpa-directory
                                                       "spacelpa-"
                                                       configuration-layer-stable-elpa-version))
-(setq configuration-layer-elpa-subdirectory "develop")
+(setq configuration-layer-elpa-subdirectory "site")
 
 (setq configuration-layer-elpa-archives
       `(("melpa"    . "melpa.org/packages/")
