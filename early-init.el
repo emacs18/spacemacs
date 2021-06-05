@@ -113,4 +113,7 @@
   (straight-use-package 'package-build)
   (straight-use-package 'pretty-hydra)
   (straight-use-package 'yasnippet-snippets)
+
+  ;; Optional packages
+  (straight-use-package '(devdocs-browser :type git :host github :repo "blahgeek/emacs-devdocs-browser"))
   )
