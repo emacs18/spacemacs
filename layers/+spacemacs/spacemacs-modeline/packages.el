@@ -61,7 +61,9 @@
         :evil-leader "tmb")
       (setq-default fancy-battery-show-percentage t))))
 
-(defun spacemacs-modeline/init-font-lock+ ())
+(defun spacemacs-modeline/init-font-lock+ ()
+  (use-package font-lock+
+    :defer t))
 
 (defun spacemacs-modeline/post-init-neotree ()
   (when (eq 'all-the-icons (spacemacs/get-mode-line-theme-name))
