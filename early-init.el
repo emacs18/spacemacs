@@ -75,7 +75,7 @@
           ))
 
   ;; You set set which profile to use.
-  (setq straight-current-profile '2021-04-10)
+  ;; (setq straight-current-profile '2021-04-10)
 
   ;; If recipes are to be over-ridden, then it should be done very early on before
   ;; the default recipe is used, e.g., right about here.  Following is an example
