@@ -297,6 +297,8 @@
     (material-light                   . material-theme)
     (mccarthy                         . sublime-themes)
     (minimal-light                    . minimal-theme)
+    (modus-operandi                   . modus-themes)
+    (modus-vivendi                    . modus-themes)
     (moe-dark                         . moe-theme)
     (moe-light                        . moe-theme)
     (odersky                          . sublime-themes)
