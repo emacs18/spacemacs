@@ -31,8 +31,7 @@
         (view :location built-in)
         golden-ratio
         (grep :location built-in)
-        (info+ :location (recipe :fetcher github
-                                 :repo "emacsmirror/info-plus"))
+        info+
         open-junk-file
         paradox
         restart-emacs
