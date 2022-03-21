@@ -528,6 +528,8 @@
       "xn" 'spacemacs/multi-line-transient-state/body)))
 
 (defun spacemacs-editing/init-undo-tree ()
+  ;; undo-tree started depending on queue in early 2022.
+  (use-package queue :defer t)  ; added for staight.el
   (use-package undo-tree
     :defer t
     :init
