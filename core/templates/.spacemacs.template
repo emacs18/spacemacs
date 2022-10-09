@@ -20,7 +20,7 @@ This function should only modify configuration layer settings."
    ;; installation feature and you have to explicitly list a layer in the
    ;; variable `dotspacemacs-configuration-layers' to install it.
    ;; (default 'unused)
-   dotspacemacs-enable-lazy-installation 'unused
+   dotspacemacs-enable-lazy-installation nil
 
    ;; If non-nil then Spacemacs will ask for confirmation before installing
    ;; a layer lazily. (default t)
@@ -32,29 +32,132 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(
+   `(
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     ;; auto-completion
+     (auto-completion
+      :variables
+      ;; auto-completion-return-key-behavior 'complete
+      auto-completion-tab-key-behavior 'cycle
+      auto-completion-complete-with-key-sequence nil
+      auto-completion-enable-help-tooltip t
+      auto-completion-enable-sort-by-usage t
+      ;; auto-completion-enable-snippets-in-popup t
+      ;; auto-completion-private-snippets-directory nil
+      )
      ;; better-defaults
-     emacs-lisp
-     ;; git
-     helm
-     ;; lsp
-     ;; markdown
-     multiple-cursors
-     ;; org
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
-     ;; spell-checking
-     ;; syntax-checking
-     ;; version-control
-     treemacs)
+     (c-c++
+      :variables
+      ;; c++-enable-organize-includes-on-save t
+      c-c++-adopt-subprojects t
+      ;; c-c++-enable-auto-newline nil
+      c-c++-backend 'lsp-ccls
+      c-c++-default-mode-for-headers 'c++-mode
+      c-c++-enable-c++11 t
+      ;; c-c++-enable-clang-format-on-save t
+      c-c++-enable-clang-support t
+      ;; Don't enable cmake to avoid annoying error messages. -rk 1/11/2018
+      ;; c-c++-enable-cmake-ide-support t
+      ;; c-c++-enable-google-newline nil
+      ;; c-c++-enable-google-style nil
+      ;; c-c++-enable-rtags-completion t
 
+      ;; Cache may use several GB of disk space!
+      c-c++-lsp-cquery-cache-directory ,(expand-file-name "~/.cache/lsp-ccls")
+      ;; c-c++-lsp-enable-semantic-highlight nil
+      ;; c-c++-lsp-semantic-highlight-method 'font-lock
+      ;; c-c++-lsp-semantic-highlight-method 'overlay
+      ;; c-c++-lsp-executable "/u/kimr/depot/ccls-20190520/bin/ccls"
+      ;; c-c++-lsp-sem-highlight-method 'font-lock ; or 'overlay
+      c-c++-lsp-sem-highlight-rainbow t
+
+      ;; ccls-executable ,(expand-file-name "ccls" invocation-directory)
+      ;; ccls-args '("--init={\"index\": {\"threads\": 2}}")
+      )
+     command-log
+     emacs-lisp
+     (git :variables git-magit-status-fullscreen nil)
+     helm
+     ;; Disable file watchers to prevent potential slow downs.
+     (lsp :variables
+          ;; Default prefix key is "s-l" which means "l pressed with super". I
+          ;; have no idea what this "super" prefix key is on linux.
+          lsp-keymap-prefix "C-;"
+          ;; This remaps "g d" and similar bindings to use lsp commands.
+          lsp-remap-xref-keybindings t
+          lsp-ui-sideline-show-hover t
+          lsp-enable-file-watchers nil)
+     markdown
+     multiple-cursors
+     (org
+      :variables
+      org-directory (expand-file-name "~/org")
+      org-enable-github-support t
+      org-enable-reveal-js-support t
+      org-enable-jira-support t
+
+      ;; Enabled notification to test drive. -rk 10/16/2021
+      ;; org-enable-notifications t
+      ;; org-start-notification-daemon-on-startup t
+
+      org-enable-roam-support t       ;; added -rk 10/17/2020
+      org-enable-roam-protocol t
+      org-enable-transclusion-support t
+      org-roam-v2-ack t
+      org-roam-directory org-directory
+      org-roam-completion-everywhere t
+      org-roam-mode-section-functions (list #'org-roam-backlinks-section
+                                            #'org-roam-reflinks-section
+                                            ;; #'org-roam-unlinked-references-section
+                                            )
+
+      org-enable-valign nil           ;; added -rk 12/25/2020
+      ;; org-enable-org-journal-support t ; TODO
+      ;; org-journal-dir "~/org/journal/"
+      ;; org-journal-file-format "%Y-%m-%d"
+      ;; org-journal-date-prefix "#+TITLE: "
+      ;; org-journal-date-format "%A, %B %d %Y"
+      ;; org-journal-time-prefix "* "
+      ;; org-journal-time-format ""
+
+      ;; org-enable-sticky-header t
+      ;; org-enable-epub-support t
+      ;; org-enable-appear-support t
+      )
+     pandoc
+     pdf
+     perforce
+     (python :variables
+             python-backend 'lsp
+             python-lsp-server 'pylsp
+             python-test-runner '(pytest nose)
+             python-formatter 'lsp
+             python-format-on-save t
+             python-save-before-test nil
+             python-fill-column 99
+             python-sort-imports-on-save t
+             )
+     (shell :variables
+            ;; shell-default-shell 'eshell
+            ;; shell-default-height 30
+            ;; shell-default-position 'bottom
+            ;; shell-default-position 'right
+            )
+     shell-scripts
+     spell-checking
+     sql
+     syntax-checking
+     (treemacs :variables
+               ;; I'm not so sure what "scope" means.
+               ;; treemacs-use-persp-scope 'Perspectives
+               treemacs-use-follow-mode 'tag
+               )
+     (version-control :variables version-control-diff-tool 'diff-hl)
+     yaml
+     )
 
    ;; List of additional packages that will be installed without being wrapped
    ;; in a layer (generally the packages are installed only and should still be
@@ -67,7 +170,7 @@ This function should only modify configuration layer settings."
    dotspacemacs-additional-packages '()
 
    ;; A list of packages that cannot be updated.
-   dotspacemacs-frozen-packages '()
+   dotspacemacs-frozen-packages '(pretty-hydra emacsql-sqlite)
 
    ;; A list of packages that will not be installed and loaded.
    dotspacemacs-excluded-packages '()
@@ -79,7 +182,7 @@ This function should only modify configuration layer settings."
    ;; installs only the used packages but won't delete unused ones. `all'
    ;; installs *all* packages supported by Spacemacs and never uninstalls them.
    ;; (default is `used-only')
-   dotspacemacs-install-packages 'used-only))
+   dotspacemacs-install-packages 'used-but-keep-unused))
 
 (defun dotspacemacs/init ()
   "Initialization:
@@ -220,7 +323,7 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-new-empty-buffer-major-mode 'text-mode
 
    ;; Default major mode of the scratch buffer (default `text-mode')
-   dotspacemacs-scratch-mode 'text-mode
+   dotspacemacs-scratch-mode 'lisp-interaction-mode
 
    ;; If non-nil, *scratch* buffer will be persistent. Things you write down in
    ;; *scratch* buffer will be saved and restored automatically.
@@ -335,7 +438,7 @@ It should only modify the values of Spacemacs settings."
    ;; `right-then-bottom'. right-then-bottom tries to display the frame to the
    ;; right; if there is insufficient space it displays it at the bottom.
    ;; (default 'bottom)
-   dotspacemacs-which-key-position 'bottom
+   dotspacemacs-which-key-position 'right
 
    ;; Control where `switch-to-buffer' displays the buffer. If nil,
    ;; `switch-to-buffer' displays the buffer in the current window even if
@@ -428,7 +531,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; If non-nil smartparens-mode will be enabled in programming modes.
    ;; (default t)
-   dotspacemacs-activate-smartparens-mode t
+   dotspacemacs-activate-smartparens-mode nil
 
    ;; If non-nil pressing the closing parenthesis `)' key in insert mode passes
    ;; over any automatically added closing parenthesis, bracket, quote, etc...
@@ -442,7 +545,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; If non-nil, start an Emacs server if one is not already running.
    ;; (default nil)
-   dotspacemacs-enable-server nil
+   dotspacemacs-enable-server t
 
    ;; Set the emacs server socket location.
    ;; If nil, uses whatever the Emacs default is, otherwise a directory path
@@ -537,8 +640,11 @@ This function defines the environment variables for your Emacs session. By
 default it calls `spacemacs/load-spacemacs-env' which loads the environment
 variables declared in `~/.spacemacs.env' or `~/.spacemacs.d/.spacemacs.env'.
 See the header of this file for more information."
-  (spacemacs/load-spacemacs-env)
-)
+  ;; Saving and loading environment is too risky when many different machines
+  ;; use the same emacs files! Perhaps the environment file name should include
+  ;; the hostname.
+  ;; (spacemacs/load-spacemacs-env)
+  )
 
 (defun dotspacemacs/user-init ()
   "Initialization for user code:
@@ -563,6 +669,30 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+
+  ;; Disable to avoid breaking org-roam-mode.
+  (global-page-break-lines-mode 0)
+
+  ;; This is so that jumping to a file and killing that buffer would restore the
+  ;; point back to this buffer. -rk 6/15/2017
+  (push "\\*Proced\\*" spacemacs-useful-buffers-regexp)
+
+  ;; (push "\\*magit" spacemacs-useful-buffers-regexp)
+  (push "magit" spacemacs-useful-buffers-regexp)
+
+  (spacemacs/set-leader-keys
+    "aors" 'org-roam-db-sync
+    "aoru" 'org-roam-ui-mode
+    )
+
+  ;; Restore this from 2 set by spacemacs back to 8.
+  (setq-default tab-width 8)
+
+  ;; Customize projectile to speed it up.
+  (setq projectile-track-known-projects-automatically nil)
+  (setq projectile-dynamic-mode-line nil)
+  (setq projectile-auto-update-cache nil)
+  (defadvice projectile-visit-project-tags-table (around disable-projectile-visit-tags activate))
 )
 
 
