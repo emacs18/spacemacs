@@ -1,11 +1,8 @@
 
 REPOS = .local/straight/repos
 
-all : bootstrap
-	mkdir .spacemacs
-
-bootstrap : $(REPOS)/straight.el
+all : $(REPOS)/straight.el
 
 $(REPOS)/straight.el :
 	mkdir -p $(REPOS)
-	cd $(REPOS); git clone -depth 10 https://github.com/raxod502/straight.el.git
+	cd $(REPOS); git clone -b develop --depth 10 https://github.com/radian-software/straight.el.git
