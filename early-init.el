@@ -53,7 +53,7 @@
 
 ;; Setup to use straight.el package manager rather than the default package.el.
 (let* ((default-directory (file-name-directory load-file-name))
-       (init-file (expand-file-name "../init-straight.el")))
+       (init-file (expand-file-name "~/org/kimr/dot-emacs/init-straight.el")))
   ;; Install packages under ./.local/straight directory.
   (setq straight-base-dir (expand-file-name ".local"))
 
