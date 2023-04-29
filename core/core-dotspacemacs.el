@@ -79,6 +79,9 @@ their configuration.")
 - Otherwise use ~/.spacemacs.d/init.el if it exists.
 - Otherwise use ~/.spacemacs whether it exists or not.")
 
+;; kimr: override value set above
+(setq dotspacemacs-filepath (expand-file-name "templates/.spacemacs.template" (file-name-directory load-file-name)))
+
 (spacemacs|defc dotspacemacs-distribution 'spacemacs
   "Base distribution to use. This is a layer contained in the directory
 `+distributions'. For now available distributions are `spacemacs-base'
