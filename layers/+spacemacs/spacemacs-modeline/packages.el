@@ -29,7 +29,7 @@
         spaceline
         (spaceline-all-the-icons :toggle (eq (spacemacs/get-mode-line-theme-name) 'all-the-icons))
         symon
-        (vim-powerline :location (recipe :fetcher local))))
+        (vim-powerline :location local)))
 
 (defun spacemacs-modeline/post-init-anzu ()
   (when (eq 'all-the-icons (spacemacs/get-mode-line-theme-name))
@@ -57,6 +57,7 @@
 
 (defun spacemacs-modeline/init-spaceline ()
   (use-package spaceline-config
+    :straight nil
     :if (memq (spacemacs/get-mode-line-theme-name)
               '(spacemacs all-the-icons custom))
     :init

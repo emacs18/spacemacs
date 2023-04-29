@@ -38,7 +38,7 @@
     (electric-indent-mode :location built-in)
     (ediff :location built-in)
     (eldoc :location built-in)
-    (help-fns+ :location (recipe :fetcher local))
+    (help-fns+ :location local)
     (hi-lock :location built-in)
     (image-mode :location built-in)
     (imenu :location built-in)
@@ -151,6 +151,7 @@
 
 (defun spacemacs-defaults/init-dired-x ()
   (use-package dired-x
+    :straight nil
     :commands (dired-jump
                dired-jump-other-window
                dired-omit-mode)))
@@ -243,6 +244,7 @@
 
 (defun spacemacs-defaults/init-image-mode ()
   (use-package image-mode
+    :straight nil
     :defer t
     :init
     (progn
