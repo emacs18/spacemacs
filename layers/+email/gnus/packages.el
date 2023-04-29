@@ -24,7 +24,7 @@
 (defconst gnus-packages
   '(
     gnus
-    window-purpose
+    (window-purpose :toggle dotspacemacs-activate-window-purpose-mode)
     persp-mode))
 
 (defun gnus/pre-init-persp-mode ()

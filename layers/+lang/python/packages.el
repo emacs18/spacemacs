@@ -55,7 +55,8 @@
     smartparens
     stickyfunc-enhance
     xcscope
-    window-purpose
+    ;; Comment out to prevent "Ignoring ... because layer python does not own"
+    ;; (window-purpose :toggle dotspacemacs-activate-window-purpose-mode)
     yapfify
     ;; packages for anaconda backend
     anaconda-mode

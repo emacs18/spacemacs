@@ -29,7 +29,8 @@
     (helm-mu :requires helm)
     org
     persp-mode
-    window-purpose))
+    (window-purpose :toggle dotspacemacs-activate-window-purpose-mode)
+    ))
 
 (defun mu4e/post-init-persp-mode ()
   (spacemacs|define-custom-layout mu4e-spacemacs-layout-name
