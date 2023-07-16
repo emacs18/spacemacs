@@ -981,10 +981,14 @@ Headline^^            Visit entry^^               Filter^^                    Da
       "rdT" 'org-roam-dailies-goto-tomorrow
       "rdd" 'org-roam-dailies-goto-date
       "rc" 'org-roam-capture
+      "rd" 'my/org-roam-capture-task
+      "re" 'my/org-roam-capture-inbox
       "rf" 'org-roam-node-find
       "rg" 'org-roam-graph
       "ri" 'org-roam-node-insert
+      "rj" 'org-roam-node-insert-immediate
       "rl" 'org-roam-buffer-toggle
+      "rp" 'my/org-roam-find-project
       "rta" 'org-roam-tag-add
       "rtr" 'org-roam-tag-remove
       "ra" 'org-roam-alias-add)
