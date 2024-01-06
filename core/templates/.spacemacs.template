@@ -179,6 +179,18 @@ This function should only modify configuration layer settings."
                ;; treemacs-use-persp-scope 'Perspectives
                treemacs-use-follow-mode 'tag
                )
+
+     ;; Do not use tree-sitter, because it does not work on CS 7. For emacs 29+,
+     ;; we may not need this since this should be built into emacs.
+     ;; (tree-sitter :variables
+     ;;              spacemacs-tree-sitter-hl-black-list '(js2-mode rjsx-mode)
+     ;;              tree-sitter-syntax-highlight-enable t
+     ;;              tree-sitter-fold-enable t
+     ;;              tree-sitter-indent-enable t
+     ;;              tree-sitter-fold-indicators-enable nil
+     ;;              treesit-extra-load-path '("/u/kimr/r/tree-sitter-module/dist/")
+     ;;              )
+
      (version-control :variables version-control-diff-tool 'diff-hl)
      yaml
      ;; my layers
