@@ -162,6 +162,8 @@ This function should only modify configuration layer settings."
      (python :variables
              python-backend 'lsp
              python-lsp-server 'pyright
+             python-shell-interpreter "python3"
+             importmagic-python-interpreter "python3"
              python-test-runner '(pytest nose)
              python-formatter 'lsp
              ;; python-format-on-save t
