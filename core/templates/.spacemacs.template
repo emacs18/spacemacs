@@ -115,6 +115,11 @@ This function should only modify configuration layer settings."
           lsp-ui-sideline-show-hover t
           lsp-enable-file-watchers nil)
      markdown
+     (multiple-cursors
+      :variables
+      multiple-cursors-backend 'mc;; other mode  'evil-mc (not support number)
+      mc/cmds-to-run-once '(upcase-region)
+      )
      openai
      (org
       :variables
