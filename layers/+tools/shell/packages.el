@@ -44,16 +44,14 @@
     (xterm-color :toggle (version< emacs-version "29.0.50"))
     terminal-here
     vi-tilde-fringe
-    window-purpose
-    (multi-vterm
-     :toggle (and shell-enable-vterm-support
-                  module-file-suffix
-                  (not (spacemacs/system-is-mswindows))))
-    (vterm
-     :toggle (and shell-enable-vterm-support
-                  module-file-suffix
-                  (not (spacemacs/system-is-mswindows))))))
-
+    (window-purpose :toggle dotspacemacs-activate-window-purpose-mode)
+    (multi-vterm :toggle (and shell-enable-vterm-support
+                              module-file-suffix
+                              (not (spacemacs/system-is-mswindows))))
+    (vterm :toggle (and shell-enable-vterm-support
+                        module-file-suffix
+                        (not (spacemacs/system-is-mswindows))))
+    ))
 
 (defun shell/init-comint ()
   (setq comint-prompt-read-only t)

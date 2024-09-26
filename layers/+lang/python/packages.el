@@ -60,7 +60,7 @@
     sphinx-doc
     smartparens
     xcscope
-    window-purpose
+    (window-purpose :toggle dotspacemacs-activate-window-purpose-mode)
     (yapfify :toggle (eq 'yapf python-formatter))
     ;; packages for anaconda backend
     (anaconda-mode :toggle (eq python-backend 'anaconda))
