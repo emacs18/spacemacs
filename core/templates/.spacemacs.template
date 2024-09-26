@@ -818,7 +818,7 @@ before packages are loaded."
   (interactive (list (read-directory-name "New org directory: ")))
   (setq org-roam-directory (file-truename directory))
   (setq org-roam-db-location
-        (expand-file-name "org-roam.db" org-roam-directory)))
+        (expand-file-name "org-roam.db" org-roam-directory))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
