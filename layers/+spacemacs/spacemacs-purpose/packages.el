@@ -29,7 +29,8 @@
         (spacemacs-purpose-popwin
          :location (recipe :fetcher local)
          :requires popwin)
-        window-purpose))
+        (window-purpose :toggle dotspacemacs-activate-window-purpose-mode)
+        ))
 
 (defun spacemacs-purpose/pre-init-eyebrowse ()
   (spacemacs|use-package-add-hook eyebrowse

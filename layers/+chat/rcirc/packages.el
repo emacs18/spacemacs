@@ -41,7 +41,8 @@
                     :toggle rcirc-enable-late-fix)
     rcirc-notify
     (rcirc-styles :toggle rcirc-enable-styles)
-    window-purpose))
+    (window-purpose :toggle dotspacemacs-activate-window-purpose-mode)
+    ))
 
 (defun rcirc/post-init-company ()
   (spacemacs|add-company-backends :backends company-capf :modes rcirc-mode))

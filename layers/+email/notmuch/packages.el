@@ -31,7 +31,8 @@
     org
     persp-mode
     ol-notmuch
-    window-purpose))
+    (window-purpose :toggle dotspacemacs-activate-window-purpose-mode)
+    ))
 
 (defun notmuch/init-counsel-notmuch ()
   (use-package counsel-notmuch
