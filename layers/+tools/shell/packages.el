@@ -43,7 +43,8 @@
     (xterm-color :toggle (version< emacs-version "29.0.50"))
     terminal-here
     vi-tilde-fringe
-    (window-purpose :toggle dotspacemacs-activate-window-purpose-mode)
+    ;; Comment out to prevent "Ignoring ... because layer shell does not own"
+    ;; (window-purpose :toggle dotspacemacs-activate-window-purpose-mode)
     (multi-vterm :toggle (and module-file-suffix (not (spacemacs/system-is-mswindows))))
     (vterm :toggle (and module-file-suffix (not (spacemacs/system-is-mswindows))))))
 
