@@ -41,7 +41,7 @@
     (erc-yank :location local :excluded t)
     erc-yt
     persp-mode
-    window-purpose
+    (window-purpose :toggle dotspacemacs-activate-window-purpose-mode)
     ))
 
 (defun erc/post-init-company ()

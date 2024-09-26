@@ -30,7 +30,8 @@
     flyspell
     persp-mode
     slack
-    window-purpose))
+    (window-purpose :toggle dotspacemacs-activate-window-purpose-mode)
+    ))
 
 (defun slack/init-alert ()
   (use-package alert

@@ -516,6 +516,13 @@ It should only modify the values of Spacemacs settings."
    ;; (default nil)
    dotspacemacs-whitespace-cleanup nil
 
+   ;; Whether to enable purpose-mode or not. This mode over-rides emacs window
+   ;; display in an intrusive way so that it prevents built-in variables such as
+   ;; display-buffer-alist from working. Set this to nil to prevent such
+   ;; complications. *org-roam* buffer may not display correctly unless this is
+   ;; set to non-nil.
+   dotspacemacs-activate-window-purpose-mode nil
+
    ;; If non-nil activate `clean-aindent-mode' which tries to correct
    ;; virtual indentation of simple modes. This can interfere with mode specific
    ;; indent handling like has been reported for `go-mode'.

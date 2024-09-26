@@ -24,7 +24,8 @@
 (defconst jabber-packages
   '(
     jabber
-    window-purpose))
+    (window-purpose :toggle dotspacemacs-activate-window-purpose-mode)
+    ))
 
 (defun jabber/init-jabber ()
   (use-package jabber
