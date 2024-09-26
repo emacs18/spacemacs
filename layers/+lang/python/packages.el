@@ -54,7 +54,8 @@
     sphinx-doc
     smartparens
     xcscope
-    (window-purpose :toggle dotspacemacs-activate-window-purpose-mode)
+    ;; Comment out to prevent "Ignoring ... because layer python does not own"
+    ;; (window-purpose :toggle dotspacemacs-activate-window-purpose-mode)
     (yapfify :toggle (eq 'yapf python-formatter))
     ;; packages for anaconda backend
     (anaconda-mode :toggle (eq python-backend 'anaconda))
