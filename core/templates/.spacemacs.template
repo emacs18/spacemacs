@@ -581,6 +581,17 @@ This function is called only while dumping Spacemacs configuration. You can
 dump."
   )
 
+;; Disable virtual-comment-mode to prevent the following startup error on emacs 29: -rk 3/20/2022
+;;
+;; Debugger entered--Lisp error: (error "Invalid object argument" Git "~/org/kimr/")
+;; md5((Git "~/org/kimr/"))
+;; virtual-comment--make-project-id((Git "~/org/kimr/"))
+;; virtual-comment--get-project()
+;; virtual-comment--init()
+;; virtual-comment-mode-enable()
+;; virtual-comment-mode()
+;; run-hooks(find-file-hook)
+(defadvice virtual-comment-mode (around disable-v-comment activate))
 
 (defun dotspacemacs/user-config ()
   "Configuration for user code:
