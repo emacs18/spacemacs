@@ -41,7 +41,7 @@
         evil-surround
         evil-textobj-line
         evil-tutor
-        (evil-unimpaired :location (recipe :fetcher local))
+        (evil-unimpaired :location local)
         evil-visual-mark-mode
         evil-visualstar
         (hs-minor-mode :location built-in)
@@ -364,7 +364,8 @@
 
 (defun spacemacs-evil/init-evil-unimpaired ()
   ;; No laziness here, unimpaired bindings should be available right away.
-  (use-package evil-unimpaired))
+  (use-package evil-unimpaired
+    :straight nil))
 
 (defun spacemacs-evil/init-evil-visual-mark-mode ()
   (use-package evil-visual-mark-mode

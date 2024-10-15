@@ -41,7 +41,7 @@
     pcre2el
     (smartparens :toggle dotspacemacs-activate-smartparens-mode)
     (evil-swap-keys :toggle dotspacemacs-swap-number-row)
-    (spacemacs-whitespace-cleanup :location (recipe :fetcher local))
+    (spacemacs-whitespace-cleanup :location local)
     string-edit-at-point
     string-inflection
     multi-line
@@ -459,6 +459,7 @@
 
 (defun spacemacs-editing/init-spacemacs-whitespace-cleanup ()
   (use-package spacemacs-whitespace-cleanup
+    :straight nil
     :commands (spacemacs-whitespace-cleanup-mode
                global-spacemacs-whitespace-cleanup-mode)
     :init
@@ -527,6 +528,8 @@
       "xn" 'spacemacs/multi-line-transient-state/body)))
 
 (defun spacemacs-editing/init-undo-tree ()
+  ;; undo-tree started depending on queue in early 2022.
+  (use-package queue :defer t)  ; added for staight.el
   (use-package undo-tree
     :defer t
     :init

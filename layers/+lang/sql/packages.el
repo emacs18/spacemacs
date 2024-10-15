@@ -26,7 +26,7 @@
         company
         org
         sql
-        (sql-indent :location elpa)
+        sql-indent
         (sqlfmt :location local)
         (sqlup-mode :toggle sql-capitalize-keywords)
         ))
@@ -195,6 +195,7 @@
 
 (defun sql/init-sqlfmt ()
   (use-package sqlfmt
+    :straight nil
     :commands sqlfmt-buffer
     :init
     (spacemacs/declare-prefix-for-mode 'sql-mode "m=" "formatting")

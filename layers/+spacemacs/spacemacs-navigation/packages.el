@@ -31,8 +31,7 @@
         (view :location built-in)
         golden-ratio
         (grep :location built-in)
-        (info+ :location (recipe :fetcher github
-                                 :repo "emacsmirror/info-plus"))
+        info+
         open-junk-file
         paradox
         restart-emacs
@@ -318,6 +317,7 @@
 
 (defun spacemacs-navigation/init-info+ ()
   (use-package info+
+    :straight nil
     :defer t
     :init
     (spacemacs/set-leader-keys "hj" 'info-display-manual)
