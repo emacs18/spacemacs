@@ -83,7 +83,7 @@ This function should only modify configuration layer settings."
      (elfeed
       ;; :variables rmh-elfeed-org-files ,(list "~/.emacs.d/data/elfeed-org.org")
       )
-     emacs-lisp
+     (emacs-lisp :variables emacs-lisp-format-on-save nil)
      eos
      ;; I don't like that evil-sniptes takes over 's' key binding in dired-mode
      ;; which is one of my most often used keys. -rk 9/7/2020
