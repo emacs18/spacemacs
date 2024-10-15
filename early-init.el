@@ -80,9 +80,8 @@
 
   ;; This is to prevent emacs wasting few seconds on startup contacting package
   ;; archives which won't be needed anyways.
-  (defadvice configuration-layer/retrieve-package-archives
-      (around do-not-retrieve-package-archives activate)
-    "Disable this function to speed up emacs startup time.")
+  (define-advice configuration-layer/retrieve-package-archives
+      (:around (orig-func &rest args) do-not-retrieve-package-archives))
 
   ;; (straight-use-package '(eaf :type git :host github
   ;;                             :repo "emacs-eaf/emacs-application-framework"
