@@ -875,15 +875,15 @@ selected frame."
 ;; ADVISE ORIGINAL (built-in):
 ;;
 ;; If WINDOW is the only one in its frame, `delete-frame'.
-(defadvice delete-window (around delete-frame-if-one-win activate)
-  "If WINDOW is the only one in its frame, then `delete-frame' too."
+(define-advice delete-window
+    (:around (orig-func &optional window &rest args) delete-frame-if-one-win)
   (if (fboundp 'with-selected-window)   ; Emacs 22+
       (with-selected-window
-          (or (ad-get-arg 0)  (selected-window))
-        (if (one-window-p t) (delete-frame) ad-do-it))
-    (save-current-buffer
-      (select-window (or (ad-get-arg 0)  (selected-window)))
-      (if (one-window-p t) (delete-frame) ad-do-it))))
+          (or window  (selected-window))
+        (if (one-window-p t) (delete-frame) (apply orig-func window args))
+        (save-current-buffer
+          (select-window (or window  (selected-window)))
+          (if (one-window-p t) (delete-frame) (apply orig-func window args))))))
 
 ;;;###autoload
 (defun delete-windows-for (&optional buffer)

@@ -758,7 +758,8 @@ dump."
 ;; virtual-comment-mode-enable()
 ;; virtual-comment-mode()
 ;; run-hooks(find-file-hook)
-(defadvice virtual-comment-mode (around disable-v-comment activate))
+(define-advice virtual-comment-mode
+    (:around (orig-func &rest args) disable-v-comment))
 
 (defun dotspacemacs/user-config ()
   "Configuration for user code:
@@ -804,7 +805,8 @@ before packages are loaded."
   (setq projectile-track-known-projects-automatically nil)
   (setq projectile-dynamic-mode-line nil)
   (setq projectile-auto-update-cache nil)
-  (defadvice projectile-visit-project-tags-table (around disable-projectile-visit-tags activate))
+  (define-advice projectile-visit-project-tags-table
+      (:around (orig-func &rest args) disable-projectile-visit-tags))
 
   ;; all-the-icons-material is used during startup, but this is not autoloaded.
   ;; -rk 2/19/2022
