@@ -32,32 +32,28 @@
 
 ;;;###autoload
 (defcustom hybrid-style-default-state
-  (spacemacs|dotspacemacs-backward-compatibility
-   hybrid-mode-default-state normal)
+  (if (boundp 'hybrid-mode-default-state) hybrid-mode-default-state 'normal)
   "Value of `evil-default-state' for hybrid-mode."
   :group 'spacemacs
   :type 'symbol)
 
 ;;;###autoload
 (defcustom hybrid-style-enable-hjkl-bindings
-  (spacemacs|dotspacemacs-backward-compatibility
-   hybrid-mode-enable-hjkl-bindings nil)
+  (if (boundp 'hybrid-mode-enable-hjkl-bindings) hybrid-mode-enable-hjkl-bindings nil)
   "If non-nil then packages configuration should enable hjkl navigation."
   :group 'spacemacs
   :type 'boolean)
 
 ;;;###autoload
 (defcustom hybrid-style-enable-evilified-state
-  (spacemacs|dotspacemacs-backward-compatibility
-   hybrid-mode-enable-evilified-state t)
+  (if (boundp 'hybrid-mode-enable-evilified-state) hybrid-mode-enable-evilified-state t)
   "If non-nil then evilified states is enabled in buffer supporting it."
   :group 'spacemacs
   :type 'boolean)
 
 ;;;###autoload
 (defcustom hybrid-style-use-evil-search-module
-  (spacemacs|dotspacemacs-backward-compatibility
-   hybrid-mode-use-evil-search-module nil)
+  (if (boundp 'hybrid-mode-use-evil-search-module) hybrid-mode-use-evil-search-module nil)
   "If non-nil then use evil own search module which is closer to Vim search
 behavior (for instance it support C-r pasting)."
   :group 'spacemacs
