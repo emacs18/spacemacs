@@ -33,7 +33,6 @@
     helm-descbinds
     (helm-ls-git :toggle (configuration-layer/layer-used-p 'git))
     helm-make
-    helm-mode-manager
     helm-org
     helm-projectile
     ;; FIXME Remove obsolete packages helm-swoop
@@ -375,15 +374,6 @@
     (spacemacs/set-leader-keys
       "cc" 'helm-make-projectile
       "cm" 'helm-make)))
-
-(defun helm/init-helm-mode-manager ()
-  (use-package helm-mode-manager
-    :defer t
-    :init
-    (spacemacs/set-leader-keys
-      "hM"    'helm-switch-major-mode
-      ;; "hm"    'helm-disable-minor-mode
-      "h C-m" 'helm-enable-minor-mode)))
 
 (defun helm/init-helm-org ()
   (use-package helm-org
