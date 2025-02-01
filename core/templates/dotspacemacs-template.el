@@ -585,8 +585,75 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+  (when (eq dotspacemacs-editing-style 'hybrid)
+    ;; (spacemacs/set-leader-keys ";" 'my-insert-semi-colon)
+    (spacemacs/set-leader-keys "C-;" 'evilnc-comment-operator)
+    (spacemacs/set-leader-keys "C-'" 'evilnc-comment-operator)
+    (define-key evil-normal-state-map (kbd "C-'") 'evil-repeat-find-char)
+    (define-key evil-normal-state-map (kbd "C-;") 'evil-repeat-find-char))
+
+  ;; Disable to avoid breaking org-roam-mode.
+  (global-page-break-lines-mode 0)
+
+  ;; This is so that jumping to a file and killing that buffer would restore the
+  ;; point back to this buffer. -rk 6/15/2017
+  (push "\\*Proced\\*" spacemacs-useful-buffers-regexp)
+
+  ;; (push "\\*magit" spacemacs-useful-buffers-regexp)
+  (push "magit" spacemacs-useful-buffers-regexp)
+
+  (spacemacs/set-leader-keys
+    "aors" 'org-roam-db-sync
+    "aoru" 'org-roam-ui-mode
+    )
+  (spacemacs/set-leader-keys-for-major-mode 'org-mode
+    "n"  'org-noter
+    "rD" 'my-org-roam-set-directory
+    "rs" 'org-roam-db-sync
+    "ru" 'org-roam-ui-mode
+    )
+
+  ;; Restore this from 2 set by spacemacs back to 8.
+  (setq-default tab-width 8)
+
+  ;; Load my customization
+  (org-babel-load-file (file-truename "~/org/kimr/dot-emacs/my-init.org"))
+
+  ;; Customize projectile to speed it up.
+  (setq projectile-track-known-projects-automatically nil)
+  (setq projectile-dynamic-mode-line nil)
+  (setq projectile-auto-update-cache nil)
+  (define-advice projectile-visit-project-tags-table
+      (:around (orig-func &rest args) disable-projectile-visit-tags))
+
+  ;; all-the-icons-material is used during startup, but this is not autoloaded.
+  ;; -rk 2/19/2022
+  (require 'all-the-icons)
+
+  ;; as instructed by github-copilot
+  (with-eval-after-load 'mcp-hub
+    ;; This list is the "Single Source of Truth"
+    (setq github-copilot-mcp-servers
+          '(;; Add the filesystem server
+            ;; It must be installed (e.g., via "npm install -g @modelcontextprotocol/server-filesystem")
+            ("fs" . (:command "npx"
+                              :args ("-y" "@modelcontextprotocol/server-filesystem"
+                                     ;; This path MUST be absolute and point to your projects
+                                     "/vagrant/spectrum/main")))))
+
+    ;; We must also tell the mcp-hub to use this new list
+    (setq mcp-hub-servers github-copilot-mcp-servers))
   )
 
+;; I wrote this to so that I can limit org-roam to specific sub-set of all my
+;; org files. Primarily this is to simplify the graphs. -rk 10/17/2020
+(defun my-org-roam-set-directory (directory)
+  "Set `org-roam-directory' to DIRECTORY."
+  (interactive (list (read-directory-name "New org directory: ")))
+  (setq org-roam-directory (file-truename directory))
+  (setq org-roam-db-location
+        (expand-file-name "org-roam.db" org-roam-directory))
+  )
 
 (define-advice dotspacemacs/layers (:after (&rest _) my-customization)
   (setq-default
