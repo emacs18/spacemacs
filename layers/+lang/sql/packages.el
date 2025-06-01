@@ -26,7 +26,7 @@
         company
         org
         sql
-        (sql-indent :location elpa :toggle sql-auto-indent)
+        (sql-indent :toggle sql-auto-indent)
         (sqlfmt :location local)
         (sqlup-mode :toggle sql-capitalize-keywords)
         ))

@@ -26,9 +26,7 @@
   ;; is an open PR to merge the fork into the original repo.
   ;; TODO when the PR is merged upstream, change to use the original package
   ;; from MELPA (IOW remove :location argument)
-  '((command-log-mode :location (recipe :fetcher github
-                                        :repo "bmag/command-log-mode"
-                                        :branch "color"))
+  '(command-log-mode
     keycast))
 
 (defun command-log/init-command-log-mode ()

@@ -22,8 +22,7 @@
 
 
 (defconst helm-packages
-  '((avy-jump-helm-line
-     :location (recipe :fetcher github :repo "sunlin7/avy-jump-helm-line"))
+  '(avy-jump-helm-line
     auto-highlight-symbol
     bookmark
     helm

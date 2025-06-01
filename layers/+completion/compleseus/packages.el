@@ -26,7 +26,7 @@
     marginalia
     ;; (compleseus-spacemacs-help :location local)
     (compleseus-spacemacs-help
-     :location (recipe :fetcher local))
+     :location local)
     consult
     consult-yasnippet
     embark
