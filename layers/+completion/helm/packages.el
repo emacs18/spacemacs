@@ -429,6 +429,7 @@
 
 (defun helm/init-helm-spacemacs-help ()
   (use-package helm-spacemacs-help
+    :straight nil
     :commands (helm-spacemacs-help-dotspacemacs
                helm-spacemacs-help
                helm-spacemacs-help-layers
