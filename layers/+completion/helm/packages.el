@@ -450,7 +450,7 @@
   (use-package helm-swoop
     :defer t
     :init
-    (setq helm-swoop-split-with-multiple-windows t
+    (setq helm-swoop-split-with-multiple-windows nil
           helm-swoop-split-direction 'split-window-vertically
           helm-swoop-split-window-function 'spacemacs/helm-swoop-split-window-function)
 
