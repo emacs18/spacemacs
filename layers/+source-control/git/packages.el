@@ -29,7 +29,7 @@
     evil-surround
     ;; forge requires a C compiler on Windows so we disable
     ;; it by default on Windows.
-    (forge :toggle (not (spacemacs/system-is-mswindows)))
+    ;; (forge :toggle (not (spacemacs/system-is-mswindows)))
     ;; include the old git{attributes,config,ignore}-mode
     git-modes
     gitignore-templates
@@ -45,7 +45,7 @@
     (magit-todos :toggle git-enable-magit-todos-plugin)
     org
     (orgit :requires org)
-    (orgit-forge :requires (org forge))
+    ;; (orgit-forge :requires (org forge))
     smeargle))
 
 
