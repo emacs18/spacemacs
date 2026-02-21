@@ -44,7 +44,7 @@
     (which-key-posframe :step pre :toggle (and (consp dotspacemacs-which-key-position)
                                                (eq (car dotspacemacs-which-key-position) 'posframe)))
     dash
-    (transient :location elpa)))
+    transient))
 
 ;; bootstrap packages
 

@@ -34,7 +34,7 @@
     ;; ob, org, org-agenda and org-contacts are installed by `org-contrib'
     (ob :location built-in)
     (ob-mermaid :toggle org-enable-mermaid-support)
-    (org :location elpa)
+    org
     (org-agenda :location built-in)
     (org-alert  :toggle org-enable-notifications)
     (org-contacts :toggle org-enable-org-contacts-support)
