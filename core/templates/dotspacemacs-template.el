@@ -731,6 +731,7 @@ before packages are loaded."
 
      (github-copilot :variables
                      copilot-max-char-warning-disable t
+                     copilot-indent-offset-warning-disable t
                      github-copilot-enable-commit-messages nil)
 
      ;; (gtags
