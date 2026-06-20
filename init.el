@@ -29,6 +29,8 @@
 
 (setq gc-cons-threshold 402653184 gc-cons-percentage 0.6)
 
+(my-record-loaded-file "init.el beg")
+
 ;; ---------------------------------------------------------------------------
 ;; * Load Core Paths
 ;; ---------------------------------------------------------------------------
@@ -95,3 +97,5 @@
     (unless (or (daemonp) (server-running-p))
       (message "Starting a server...")
       (server-start))))
+
+(my-record-loaded-file "init.el end")

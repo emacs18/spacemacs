@@ -44,6 +44,23 @@
 ;; needed nor loaded on those versions.
 (setq package-enable-at-startup nil)
 
+(defvar my-loaded-files-log
+  (expand-file-name "../packages-loaded" user-lisp-directory)
+  "Append-only log of every Emacs Lisp file loaded in this session.")
+
+(defvar my-loaded-files-buffer (find-file-noselect my-loaded-files-log))
+
+(defun my-record-loaded-file (filename)
+  "Append FILENAME to `my-loaded-files-log'."
+  (when (and (stringp filename) (buffer-live-p my-loaded-files-buffer))
+    (save-excursion
+      (set-buffer my-loaded-files-buffer)
+      (goto-char (point-max))
+      (insert (concat filename "\n")))))
+
+;; (define-advice load (:before (filename &rest _) record-loaded-files) (my-record-loaded-file filename))
+(add-hook 'after-load-functions #'my-record-loaded-file)
+
 (load (concat (file-name-directory load-file-name)
               "core/core-early-funcs")
       nil (not init-file-debug))
@@ -59,3 +76,5 @@
 ;;
 ;; (add-hook 'window-setup-hook 'spacemacs/toggle-gui-elements-off)
 ;; (add-hook 'tty-setup-hook 'spacemacs/toggle-gui-elements-off)
+
+(my-record-loaded-file "early-init.el end")

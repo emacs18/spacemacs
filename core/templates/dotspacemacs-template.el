@@ -745,9 +745,11 @@ before packages are loaded."
      html
      ;; ipython-notebook
 
-     ;; Enable ivy or helm, not both.
+     ;; Enable only one among compleseus, ivy and helm.
+     ;; (compleseus : variables compleseus-backend 'vertico)
      ;; (ivy :variables ivy-magic-tilde nil)
      helm
+
      ;; Setting ibuffer-group-buffers-by to 'projects makes things too slow!
      (ibuffer :variables ibuffer-group-buffers-by nil)
      (java :variables java-backend 'lsp)
