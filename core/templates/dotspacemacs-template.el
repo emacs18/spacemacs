@@ -820,6 +820,7 @@ before packages are loaded."
       ;; org-enable-sticky-header t
       ;; org-enable-epub-support t
       ;; org-enable-appear-support t
+      org-enable-modern-support t
       )
      pandoc
      pdf
