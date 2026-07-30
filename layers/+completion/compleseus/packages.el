@@ -26,7 +26,7 @@
     marginalia
     ;; (compleseus-spacemacs-help :location local)
     (compleseus-spacemacs-help
-     :location (recipe :fetcher local))
+     :location local)
     consult
     consult-yasnippet
     embark
@@ -434,6 +434,7 @@
       (define-key vertico-map (kbd "M-P") #'spacemacs/consult-toggle-preview)))
 
   (use-package vertico-directory
+    :straight nil
     :after vertico
     ;; More convenient directory navigation commands
     :init (bind-key "C-h" 'vertico-directory-up vertico-map
@@ -442,12 +443,16 @@
     :hook (rfn-eshadow-update-overlay . vertico-directory-tidy))
 
   (use-package vertico-quick
+    :straight nil
+    :after vertico
     :after vertico
     :init
     (define-key vertico-map "\M-q" #'vertico-quick-insert)
     (define-key vertico-map "\C-q" #'vertico-quick-exit))
 
   (use-package vertico-repeat
+    :straight nil
+    :after vertico
     :after vertico
     :init
     (add-hook 'minibuffer-setup-hook #'vertico-repeat-save)
@@ -473,6 +478,7 @@
 
 (defun compleseus/init-compleseus-spacemacs-help ()
   (use-package compleseus-spacemacs-help
+    :straight nil
     :defer t
     :init
     (spacemacs/set-leader-keys

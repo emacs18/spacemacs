@@ -36,15 +36,15 @@
     ;; pre packages, initialized after the bootstrap packages
     ;; these packages can use use-package
     (dotenv-mode :step pre)
-    (evil-evilified-state :location (recipe :fetcher local) :step pre :protected t)
+    (evil-evilified-state :location local :step pre :protected t)
     (pcre2el :step pre)
-    (holy-mode :location (recipe :fetcher local) :step pre)
-    (hybrid-mode :location (recipe :fetcher local) :step pre)
+    (holy-mode :location local :step pre)
+    (hybrid-mode :location local :step pre)
     (spacemacs-theme :location built-in)
     (which-key-posframe :step pre :toggle (and (consp dotspacemacs-which-key-position)
                                                (eq (car dotspacemacs-which-key-position) 'posframe)))
     dash
-    (transient :location elpa)))
+    transient))
 
 ;; bootstrap packages
 
@@ -621,7 +621,8 @@ Press \\[which-key-toggle-persistent] to hide."
 ;; pre packages
 
 (defun spacemacs-bootstrap/init-evil-evilified-state ()
-  (use-package evil-evilified-state)
+  (use-package evil-evilified-state
+    :straight nil)
   (define-key evil-evilified-state-map (kbd dotspacemacs-leader-key)
               spacemacs-default-map))
 
@@ -632,6 +633,7 @@ Press \\[which-key-toggle-persistent] to hide."
 
 (defun spacemacs-bootstrap/init-holy-mode ()
   (use-package holy-mode
+    :straight nil
     :commands holy-mode
     :init
     (when (eq 'emacs dotspacemacs-editing-style)
@@ -652,6 +654,7 @@ Press \\[which-key-toggle-persistent] to hide."
 
 (defun spacemacs-bootstrap/init-hybrid-mode ()
   (use-package hybrid-mode
+    :straight nil
     :config
     (when (eq 'hybrid dotspacemacs-editing-style) (hybrid-mode))
     (spacemacs|add-toggle hybrid-mode

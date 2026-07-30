@@ -333,6 +333,7 @@
 
 (defun spacemacs-navigation/init-info+ ()
   (use-package info+
+    :straight nil
     :defer t
     :init
     (setq Info-fontify-angle-bracketed-flag nil)

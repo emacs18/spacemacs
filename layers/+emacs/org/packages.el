@@ -34,7 +34,7 @@
     ;; ob, org, org-agenda and org-contacts are installed by `org-contrib'
     (ob :location built-in)
     (ob-mermaid :toggle org-enable-mermaid-support)
-    (org :location elpa)
+    org
     (org-agenda :location built-in)
     (org-alert  :toggle org-enable-notifications)
     (org-contacts :toggle org-enable-org-contacts-support)
@@ -113,6 +113,7 @@
 
 (defun org/init-ob ()
   (use-package ob
+    :straight nil
     :defer t
     :init
     (define-advice org-babel-execute-src-block (:before (&rest _) load-lang)
@@ -489,6 +490,7 @@ Will work on both org-mode and any mode that accepts plain html."
 
 (defun org/init-org-agenda ()
   (use-package org-agenda
+    :straight nil
     :defer t
     :init
     (setq org-agenda-restore-windows-after-quit t)
@@ -676,6 +678,7 @@ Headline^^            Visit entry^^               Filter^^                    Da
 
 (defun org/init-org-expiry ()
   (use-package org-expiry
+    :straight nil
     :commands (org-expiry-insinuate
                org-expiry-deinsinuate
                org-expiry-insert-created
@@ -1004,6 +1007,7 @@ Headline^^            Visit entry^^               Filter^^                    Da
 
   (use-package org-roam-protocol
     :if org-enable-roam-protocol
+    :straight nil
     :after org-protocol))
 
 (defun org/init-org-sticky-header ()

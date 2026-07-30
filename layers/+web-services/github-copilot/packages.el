@@ -81,6 +81,7 @@ and *programmatically* sets up the default tools."
     )
 
   (use-package mcp-hub
+    :straight nil
     :after mcp ;; The hub *must* be built AFTER the mcp foundation!
     :init
     (spacemacs/set-leader-keys "$m" 'mcp-hub)

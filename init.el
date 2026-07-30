@@ -77,6 +77,12 @@
   (require 'core-spacemacs)
   (configuration-layer/load-lock-file)
   (spacemacs/init)
+
+  (straight-use-package 'closql) ;; forge uses closql without specifying dependency on it!
+  (straight-use-package 'ghub)   ;; forge uses ghub without specifying dependency on it!
+  (straight-use-package 'treepy) ;; ghub uses treepy without specifying dependency on it!
+  (straight-use-package 'shift-number) ;; evil-numbers needs this
+
   (configuration-layer/stable-elpa-init)
   (configuration-layer/load)
   (spacemacs-buffer/display-startup-note)

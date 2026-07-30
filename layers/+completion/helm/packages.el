@@ -22,8 +22,7 @@
 
 
 (defconst helm-packages
-  '((avy-jump-helm-line
-     :location (recipe :fetcher github :repo "sunlin7/avy-jump-helm-line"))
+  '(avy-jump-helm-line
     auto-highlight-symbol
     bookmark
     helm
@@ -34,7 +33,6 @@
     helm-descbinds
     (helm-ls-git :toggle (configuration-layer/layer-used-p 'git))
     helm-make
-    helm-mode-manager
     helm-org
     helm-projectile
     ;; FIXME Remove obsolete packages helm-swoop
@@ -377,15 +375,6 @@
       "cc" 'helm-make-projectile
       "cm" 'helm-make)))
 
-(defun helm/init-helm-mode-manager ()
-  (use-package helm-mode-manager
-    :defer t
-    :init
-    (spacemacs/set-leader-keys
-      "hM"    'helm-switch-major-mode
-      ;; "hm"    'helm-disable-minor-mode
-      "h C-m" 'helm-enable-minor-mode)))
-
 (defun helm/init-helm-org ()
   (use-package helm-org
     :commands (helm-org-in-buffer-headings)
@@ -429,6 +418,7 @@
 
 (defun helm/init-helm-spacemacs-help ()
   (use-package helm-spacemacs-help
+    :straight nil
     :commands (helm-spacemacs-help-dotspacemacs
                helm-spacemacs-help
                helm-spacemacs-help-layers
