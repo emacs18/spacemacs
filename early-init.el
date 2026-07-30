@@ -20,7 +20,16 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+;; (setq warning-minimum-log-level :error)
+;; (add-to-list 'warning-suppress-types '(files . "Missing `lexical-binding' cookie"))
 
+;; Under some conditions several spacemacs|use-package-add-hook calls have no
+;; impact, e.g., within treemacs/pre-init-winum.  Such conditions may include
+;; if straight.el is used rather than package.el to install packages.
+(setq use-package-inject-hooks t)
+
+
+(custom-set-variables '(user-lisp-directory "~/org/kimr/dot-emacs/user-lisp"))
 ;; Before Emacs 27, the init file was responsible for initializing the package
 ;; manager by calling `package-initialize'. Emacs 27 changed the default
 ;; behavior: It now calls `package-initialize' before loading the init file.
@@ -34,6 +43,23 @@
 ;; the package manager before loading the init file, so this file is neither
 ;; needed nor loaded on those versions.
 (setq package-enable-at-startup nil)
+
+(defvar my-loaded-files-log
+  (expand-file-name "../packages-loaded" user-lisp-directory)
+  "Append-only log of every Emacs Lisp file loaded in this session.")
+
+(defvar my-loaded-files-buffer (find-file-noselect my-loaded-files-log))
+
+(defun my-record-loaded-file (filename)
+  "Append FILENAME to `my-loaded-files-log'."
+  (when (and (stringp filename) (buffer-live-p my-loaded-files-buffer))
+    (save-excursion
+      (set-buffer my-loaded-files-buffer)
+      (goto-char (point-max))
+      (insert (concat filename "\n")))))
+
+;; (define-advice load (:before (filename &rest _) record-loaded-files) (my-record-loaded-file filename))
+(add-hook 'after-load-functions #'my-record-loaded-file)
 
 (load (concat (file-name-directory load-file-name)
               "core/core-early-funcs")
@@ -115,3 +141,5 @@
 ;;
 ;; (add-hook 'window-setup-hook 'spacemacs/toggle-gui-elements-off)
 ;; (add-hook 'tty-setup-hook 'spacemacs/toggle-gui-elements-off)
+
+(my-record-loaded-file "early-init.el end")

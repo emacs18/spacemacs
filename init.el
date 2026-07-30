@@ -25,7 +25,11 @@
 ;; ---------------------------------------------------------------------------
 ;; Increase garbage collection threshold to speed up startup.
 (defconst emacs-start-time (current-time))
+;; (setq spacemacs-start-directory (file-name-directory load-file-name))
+
 (setq gc-cons-threshold 402653184 gc-cons-percentage 0.6)
+
+(my-record-loaded-file "init.el beg")
 
 ;; ---------------------------------------------------------------------------
 ;; * Load Core Paths
@@ -99,3 +103,5 @@
     (unless (or (daemonp) (server-running-p))
       (message "Starting a server...")
       (server-start))))
+
+(my-record-loaded-file "init.el end")

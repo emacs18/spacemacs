@@ -44,16 +44,15 @@
     (xterm-color :toggle (version< emacs-version "29.0.50"))
     terminal-here
     vi-tilde-fringe
-    window-purpose
-    (multi-vterm
-     :toggle (and shell-enable-vterm-support
-                  module-file-suffix
-                  (not (spacemacs/system-is-mswindows))))
-    (vterm
-     :toggle (and shell-enable-vterm-support
-                  module-file-suffix
-                  (not (spacemacs/system-is-mswindows))))))
-
+    ;; Comment out to prevent "Ignoring ... because layer shell does not own"
+    ;; (window-purpose :toggle dotspacemacs-activate-window-purpose-mode)
+    (multi-vterm :toggle (and shell-enable-vterm-support
+                              module-file-suffix
+                              (not (spacemacs/system-is-mswindows))))
+    (vterm :toggle (and shell-enable-vterm-support
+                        module-file-suffix
+                        (not (spacemacs/system-is-mswindows))))
+    ))
 
 (defun shell/init-comint ()
   (setq comint-prompt-read-only t)
